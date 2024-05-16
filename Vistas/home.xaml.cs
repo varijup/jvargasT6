@@ -23,4 +23,15 @@ public partial class home : ContentPage
         estuadientes = new ObservableCollection<Estudiante>(ListEs);
         listaEstudiantes.ItemsSource = estuadientes;
     }
+
+    private void btnSaltar_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new vAgregar());
+    }
+
+    private void listaEstudiantes_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        var objetoestudiante = (Estudiante)e.SelectedItem;
+        Navigation.PushAsync(new vActualizar(objetoestudiante));
+    }
 }
